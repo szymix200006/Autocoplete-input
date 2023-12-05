@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        //klasy zawsze w strict mode
+
+        //klasy wprowadzenie
+        /*class Car {
+            constructor(name, year) {
+                this.name = name;
+                this.year = year;
+            }
+
+            print() {
+                console.log(this.name, this.year);
+            }
+        }
+
+        const car1 = new Car('Dodge', 2015);
+        car1.print();
+
+        let Animal = class {
+            constructor(name) {
+                this.name = name;
+                this._age = 1;
+            }
+
+            //zmienna prywatna
+            #privateValue = "secret message";
+            zmienna statyczna(odwolujemy sie przez nazwe klasy)
+            static numOfAnimals = 0;
+
+            getName = () => {
+                return this.name;
+            }
+
+            set age(value) {
+                if(value > 0) {
+                    this._age = value;
+                }
+            }
+
+            get age() {
+                return this._age;
+            }
+
+            static getNewAnimal() {
+                return new Animal("Default Animal");
+            }
+
+            static getAnimalCount() {
+                return Animal.count;
+            }
+        }
+
+        const animal1 = new Animal("Tiger");
+        console.log(animal1.getName());
+
+        animal1.age = 10;
+        console.log(animal1.age);
+
+        const animal2 = Animal.getNewAnimal();
+        console.log(animal2.getName());
+
+        console.dir(Animal);
+        console.log(Animal.getAnimalCount());*/
+
+        //extends, super
+
+        class Animal {
+            constructor(name) {
+                this.name = name;
+                this._type = "animal";
+
+                if(Animal.count === undefined) Animal.count = 0;
+                this.id = Animal.count;
+                Animal.count++;
+            }
+
+            set type(str) {
+                if(typeof str === 'string') this._type = str;
+            }
+
+            get type() {
+                return this._type;
+            }
+
+            printName() {
+                console.log("ANIMAL:", this.name);
+            }
+        }
+
+        class Human extends Animal {
+            constructor(name) {
+                super(name);
+            }
+
+            printName() {
+                super.printName();
+                console.log("HUMAN:", this.name);
+            } //przesolninie metody
+        }
+
+        const human1 = new Human("Adam");
+        human1.printName();
+        console.log(Animal.count);
+    </script>
+</body>
+</html>
